@@ -1,0 +1,30 @@
+---
+title: "Flagstaff Weather 1950-2019"
+author: "Namiko Service"
+date: "11/29/2023"
+output: pdf_document
+---
+
+```{r, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(ServiceChapter16)
+library(ggplot2)
+```
+
+Daily maximum and minimum temperatures measured at the Pulliam Flagstaff Airport form 1950 to 2019.
+
+```{r}
+ggplot(Flagstaff_Weather, aes(x=DATE)) +
+  geom_line(aes(y=TMAX, color="Max Temp"))+
+  geom_line(aes(y=TMIN, color="Min Temp"))
+```
+
+Daily precipitation and snow in inches from 2015 to 2019.
+
+```{r}
+prcp<-Flagstaff_Weather%>%
+  filter(DATE>="2015-01-01")
+ggplot(prcp, aes(x=DATE)) +
+  geom_line(aes(y=PPECIP, color="Precipitation"))+
+  geom_line(aes(y=SNOW, color="Snow"))
+```
