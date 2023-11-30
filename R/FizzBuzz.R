@@ -17,15 +17,15 @@ for (i in 1:length(x)){
   if(x[i]<=0){
     stop('Error: Input is less than or equal to zero')
   }
+  else if(is.infinite(x[i])){
+    stop('Error: Input is infinite')
+  }
   else if(x[i]%%3==0 & x[i]%%5==0){ game[i]<-"FizzBuzz"
   }
   else if(x[i]%%3==0){
     game[i]<-"Fizz"
   }
   else if(x[i]%%5==0){ game[i]<-"Buzz"
-  }
-  else if(is.infinite(x[i])){
-    stop('Error: Input is infinite')
   }
   else{
     game[i]<-paste(i) }
